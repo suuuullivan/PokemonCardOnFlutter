@@ -8,6 +8,12 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "blur",
+      "rootUri": "file:///C:/Users/sulli/AppData/Local/Pub/Cache/hosted/pub.dev/blur-3.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.16"
+    },
+    {
       "name": "boolean_selector",
       "rootUri": "file:///C:/Users/sulli/AppData/Local/Pub/Cache/hosted/pub.dev/boolean_selector-2.1.1",
       "packageUri": "lib/",
@@ -188,7 +194,7 @@
       "languageVersion": "3.5"
     }
   ],
-  "generated": "2024-12-04T15:38:23.623140Z",
+  "generated": "2024-12-05T09:27:41.060441Z",
   "generator": "pub",
   "generatorVersion": "3.5.4",
   "flutterRoot": "file:///C:/flutter/src/flutter",

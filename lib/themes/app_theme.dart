@@ -130,6 +130,29 @@ class AppTheme {
     fontSize: 10,
     fontWeight: FontWeight.w700,
   );
+/*
+  static const titleAppPokemon = TextStyle(
+    fontSize: 40,
+    fontWeight: FontWeight.w900,
+    color: AppColor.mediumCyan,
+    fontFamily: 'Avenir'
+  );*/
+
+  static TextStyle get titleAppPokemon => TextStyle(
+    fontSize: 40,
+    fontWeight: FontWeight.w900,
+    fontFamily: 'Avenir',
+    foreground: Paint()..shader = AppColor.createGradientShader([AppColor.mediumCyan, AppColor.darkCyan]),
+  );
+
+  static const TextBottomBarOnCardAppPokemon = TextStyle(
+      fontSize: AppMargin.regular,
+      fontWeight: FontWeight.w700,
+      color: AppColor.white,
+      fontFamily: 'Avenir'
+  );
+
+
 
 //endregion
 
