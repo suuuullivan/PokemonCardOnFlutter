@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import '../models/pokemon_card.dart';
+import '../models/sets/set_info.dart';
 
 class ApiService {
   static const String baseUrl = 'https://api.pokemontcg.io/v2';
@@ -17,6 +18,20 @@ class ApiService {
       return data.map((json) => PokemonCard.fromJson(json)).toList();
     } else {
       throw Exception('Erreur lors de la récupération des cartes Pokémon');
+    }
+  }
+
+  Future<List<SetInfo>> fetchSetImages() async {
+    final response = await http.get(
+      Uri.parse('$baseUrl/sets'),
+      headers: {'X-Api-Key': apiKey},
+    );
+
+    if (response.statusCode == 200) {
+      final data = json.decode(response.body)['data'] as List;
+      return data.map((json) => SetInfo.fromJson(json)).toList();
+    } else {
+      throw Exception('Erreur lors de la récupération des sets');
     }
   }
 }
