@@ -87,8 +87,6 @@ class AppColor {
   );
 }
 
-
-
 extension ColorExtension on Color {
   MaterialColor getMaterialColor() {
     List strengths = <double>[0.05];
