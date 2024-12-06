@@ -130,13 +130,6 @@ class AppTheme {
     fontSize: 10,
     fontWeight: FontWeight.w700,
   );
-/*
-  static const titleAppPokemon = TextStyle(
-    fontSize: 40,
-    fontWeight: FontWeight.w900,
-    color: AppColor.mediumCyan,
-    fontFamily: 'Avenir'
-  );*/
 
   static TextStyle get titleAppPokemon => TextStyle(
     fontSize: 40,
@@ -151,10 +144,6 @@ class AppTheme {
       color: AppColor.white,
       fontFamily: 'Avenir'
   );
-
-
-
-//endregion
 
 //region ThemeData
   static final themeData = ThemeData(
