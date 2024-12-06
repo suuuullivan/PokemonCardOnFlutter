@@ -21,6 +21,7 @@ class AppColor {
   static const Color darkBlue = Color(0xFF081831);
   static Color darkBlue30 = darkBlue.withOpacity(0.3);
   static Color darkBlue50 = darkBlue.withOpacity(0.5);
+  static const Color mediumBlue = Color(0xFF1D6586);
 
   static const Color electricGreen = Color(0xff2bffb7);
   static  Color electricGreen50 = electricGreen.withOpacity(0.5);
@@ -43,8 +44,18 @@ class AppColor {
   static createGradient(List<Color> colors) {
     return LinearGradient(
       colors: colors,
-      begin: Alignment.bottomLeft,
-      end: Alignment.topRight,
+      begin: Alignment.centerLeft,
+      end: Alignment.centerRight,
+    );
+  }
+
+  static Shader createGradientShader(List<Color> colors) {
+    return LinearGradient(
+      colors: colors,
+      begin: Alignment.centerLeft,
+      end: Alignment.centerRight,
+    ).createShader(
+      Rect.fromLTWH(0.0, 0.0, 300.0, 70.0),
     );
   }
   
@@ -75,8 +86,6 @@ class AppColor {
     const Alignment(1, -1)
   );
 }
-
-
 
 extension ColorExtension on Color {
   MaterialColor getMaterialColor() {

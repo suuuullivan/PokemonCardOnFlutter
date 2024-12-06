@@ -4,6 +4,7 @@ class AppMargin {
   static const veryTiny = 2.0;
   static const tiny = 4.0;
   static const small = 8.0;
+  static const regular = 14.0;
   static const medium = 16.0;
   static const large = 24.0;
   static const xlarge = 32.0;
