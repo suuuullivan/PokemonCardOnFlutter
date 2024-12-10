@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../../card_information/card_information_screen.dart';
 import '../collection_widget/custom_title.dart';
 import 'card_list_view_model.dart';
 
 class CardListScreen extends StatelessWidget {
   final String setId;
-  final String setImageSetUrl;
+  final String setImageWithUrl;
 
   const CardListScreen(
-      {Key? key, required this.setId, required this.setImageSetUrl})
+      {Key? key, required this.setId, required this.setImageWithUrl})
       : super(key: key);
 
   @override
@@ -20,7 +21,7 @@ class CardListScreen extends StatelessWidget {
         children: [
           CustomTitle(
             title: 'Your Collection',
-            imageUrl: setImageSetUrl,
+            imageUrl: setImageWithUrl,
           ),
           Expanded(
             child: Consumer<CardListViewModel>(
@@ -48,18 +49,31 @@ class CardListScreen extends StatelessWidget {
                     itemCount: cards.length,
                     itemBuilder: (context, index) {
                       final card = cards[index];
-                      return Container(
-                        constraints: const BoxConstraints(
-                          maxHeight: 500,
-                          minHeight: 300,
-                        ),
-                        child: card.cardImageUrl != null
-                            ? Image.network(
-                                card.cardImageUrl!,
-                                fit: BoxFit.cover,
-                              )
-                            : const Icon(Icons.image_not_supported, size: 120),
-                      );
+                      return GestureDetector(
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => CardInformationScreen(
+                                  card: card,
+                                  setImageUrl: setImageWithUrl,
+                                ),
+                              ),
+                            );
+                          },
+                          child: Container(
+                            constraints: const BoxConstraints(
+                              maxHeight: 500,
+                              minHeight: 300,
+                            ),
+                            child: card.cardImageUrl != null
+                                ? Image.network(
+                                    card.cardImageUrl!,
+                                    fit: BoxFit.cover,
+                                  )
+                                : const Icon(Icons.image_not_supported,
+                                    size: 120),
+                          ));
                     },
                   ),
                 );
