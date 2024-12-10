@@ -22,14 +22,15 @@ class ContainerInformationCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
-            'Set information',
-            style: AppTheme.fontBoldAppPokemon
+          const Text('Set information', style: AppTheme.fontBoldAppPokemon),
+          const SizedBox(height: 8),
+          Text(
+            'Number of cards: ${card.setInfo?.total}',
+            style: AppTheme.fontLightAppPokemon,
           ),
           const SizedBox(height: 8),
-          Text('Number of cards: ${card.setInfo?.total}', style: AppTheme.fontLightAppPokemon,),
-          const SizedBox(height: 8),
-          Text('Position in set: ${card.positionCard}', style: AppTheme.fontLightAppPokemon),
+          Text('Position in set: ${card.positionCard}',
+              style: AppTheme.fontLightAppPokemon),
           const SizedBox(height: 8),
           Row(
             children: [

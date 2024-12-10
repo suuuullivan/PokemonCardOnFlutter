@@ -1,50 +1,52 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:pokemon_card_on_flutter/data/models/pokemon_card.dart';
+import 'package:provider/provider.dart';
 import '../../../themes/app_theme.dart';
+import '../../../data/models/pokemon_card.dart';
+import '../card_information_view_model.dart';
 
-class ContainerPictureCard extends StatefulWidget {
+class ContainerPictureCard extends StatelessWidget {
   final PokemonCard card;
 
   const ContainerPictureCard({super.key, required this.card});
 
   @override
-  _ContainerPictureCardState createState() => _ContainerPictureCardState();
-}
-
-class _ContainerPictureCardState extends State<ContainerPictureCard> {
-  bool isLocked = false;
-
-  @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Image.network(
-          widget.card.cardImageUrl!,
-          height: 400,
-          width: double.infinity,
-          fit: BoxFit.contain,
-        ),
-        const SizedBox(height: 16),
+    final viewModel = context.watch<CardInformationViewModel>();
 
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Switch(
-              value: isLocked,
-              onChanged: (value) {
-                setState(() {
-                  isLocked = value;
-                });
-              },
+    return GestureDetector(
+      onPanUpdate: (details) {
+        viewModel.updateRotation(details.delta.dx, details.delta.dy);
+      },
+      child: Column(
+        children: [
+          Transform(
+            transform: Matrix4.identity()
+              ..rotateX(viewModel.rotationX)
+              ..rotateY(viewModel.rotationY),
+            alignment: Alignment.center,
+            child: Image.network(
+              card.cardImageUrl!,
+              height: 400,
+              width: double.infinity,
+              fit: BoxFit.contain,
             ),
-            const SizedBox(width: 8),
-            const Text(
-              'Lock card rotation',
-              style: AppTheme.fontBoldAppPokemon
-            ),
-          ],
-        ),
-      ],
+          ),
+          const SizedBox(height: 16),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Switch(
+                value: viewModel.isLocked,
+                onChanged: viewModel.toggleLock,
+              ),
+              const SizedBox(width: 4),
+              const Text('Lock card rotation',
+                  style: AppTheme.fontBoldAppPokemon),
+            ],
+          ),
+        ],
+      ),
     );
   }
 }
