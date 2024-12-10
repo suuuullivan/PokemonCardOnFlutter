@@ -145,6 +145,27 @@ class AppTheme {
       fontFamily: 'Avenir'
   );
 
+  static const fontLightAppPokemon = TextStyle(
+    fontSize: AppMargin.regular,
+    fontWeight: FontWeight.w300,
+    color: AppColor.darkBlue,
+    fontFamily: 'Avenir'
+  );
+
+  static const fontBoldAppPokemon = TextStyle(
+      fontSize: AppMargin.medium,
+      fontWeight: FontWeight.w900,
+      color: AppColor.darkBlue,
+      fontFamily: 'Avenir'
+  );
+
+  static const fontBoldWhiteAppPokemon = TextStyle(
+      fontSize: AppMargin.medium,
+      fontWeight: FontWeight.w900,
+      color: AppColor.white,
+      fontFamily: 'Avenir'
+  );
+
 //region ThemeData
   static final themeData = ThemeData(
     useMaterial3: true,

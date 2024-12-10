@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       title: 'Pokemon Card Flutter',
       theme: ThemeData(primarySwatch: Colors.blue),
       initialRoute: AppRoutes.homeScreen,
-      routes: AppRoutes.routes,
+      onGenerateRoute: AppRoutes.onGenerateRoute,
     );
   }
 }

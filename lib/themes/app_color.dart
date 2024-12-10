@@ -41,6 +41,47 @@ class AppColor {
   static Color cyan50 = cyan.withOpacity(0.5);
   static Color cyan10 = cyan.withOpacity(0.1);
 
+
+  static const cardFireFirstColor = Color(0XFFE02A02);
+  static const cardFireSecondColor = Color(0XFFFFBD15);
+
+  static const cardGrassFirstColor = Color(0XFF9EFED0);
+  static const cardGrassSecondColor = Color(0XFF038E00);
+
+  static const cardLightningFirstColor = Color(0XFFFFC700);
+  static const cardLightningSecondColor = Color(0XFFFFDC5F);
+
+  static const cardWaterFirstColor = Color(0XFFC0F6FA);
+  static const cardWaterSecondColor = Color(0XFF03A4E8);
+
+  static const cardIceFirstColor = Color(0xFFADFFF7);
+  static const cardIceSecondColor = Color(0xFF3CD7C9);
+
+  static const cardNormalFirstColor = Color(0xFFCFAE00);
+  static const cardNormalSecondColor = Color(0xFFFDEBA7);
+
+  static const cardColorlessFirstColor = Color(0XFFD3D3D3);
+  static const cardColorlessSecondColor = Color(0XFFFFFFFF);
+
+  static const cardDarknessFirstColor = Color(0XFF4A4A4A);
+  static const cardDarknessSecondColor = Color(0XFF000000);
+
+  static const cardDragonFirstColor = Color(0XFF7038F8);
+  static const cardDragonSecondColor = Color(0XFF4A007F);
+
+  static const cardFairyFirstColor = Color(0XFFFFC0CB);
+  static const cardFairySecondColor = Color(0XFFF489B5);
+
+  static const cardFightingFirstColor = Color(0XFFC03028);
+  static const cardFightingSecondColor = Color(0XFF7D1F1A);
+
+  static const cardMetalFirstColor = Color(0XFFB8B8D0);
+  static const cardMetalSecondColor = Color(0XFF9090A0);
+
+  static const cardPsychicFirstColor = Color(0XFFFF6666);
+  static const cardPsychicSecondColor = Color(0XFFAA0088);
+
+
   static createGradient(List<Color> colors) {
     return LinearGradient(
       colors: colors,
@@ -58,7 +99,7 @@ class AppColor {
       Rect.fromLTWH(0.0, 0.0, 300.0, 70.0),
     );
   }
-  
+
   static createGradientFromTo(List<Color> colors , AlignmentGeometry begin , AlignmentGeometry end){
     return LinearGradient(
         colors: colors,

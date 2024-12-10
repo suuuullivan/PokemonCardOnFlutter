@@ -9,6 +9,7 @@ class PokemonCard {
   final List<String> types;
   final String? artist;
   final String? cardImageUrl;
+  final String? positionCard;
   final SetInfo? setInfo;
   final Cardmarket? cardmarket;
 
@@ -20,6 +21,7 @@ class PokemonCard {
     required this.types,
     required this.artist,
     required this.cardImageUrl,
+    required this.positionCard,
     required this.setInfo,
     required this.cardmarket,
   });
@@ -33,6 +35,7 @@ class PokemonCard {
       types: List<String>.from(json['types'] ?? []),
       artist: json['artist'],
       cardImageUrl: json['images']?['small'],
+      positionCard: json['number'],
       setInfo: json['set'] != null ? SetInfo.fromJson(json['set']) : null,
       cardmarket: json['cardmarket'] != null ? Cardmarket.fromJson(json['cardmarket']) : null,
     );
