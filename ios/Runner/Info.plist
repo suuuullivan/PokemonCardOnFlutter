@@ -50,6 +50,7 @@
       <string>https</string>
       <string>http</string>
     </array>
-
+    <key>NSMotionUsageDescription</key>
+    <string>Cette application nécessite l'accès aux capteurs pour ajuster l'orientation de l'image.</string>
 </dict>
 </plist>
