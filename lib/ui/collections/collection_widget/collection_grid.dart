@@ -25,7 +25,7 @@ class CollectionGrid extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => CardListScreen(setId: set.id, setImageSetUrl: set.images!.logo),
+                builder: (context) => CardListScreen(setId: set.id, setImageWithUrl: set.images!.logo),
               ),
             );
           },
