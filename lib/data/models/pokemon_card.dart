@@ -1,11 +1,17 @@
-import 'package:pokemon_card_on_flutter/data/models/sets/set_info.dart';
+import 'package:json_annotation/json_annotation.dart';
+import 'sets/set_info.dart';
 import 'card_market.dart';
 
+part 'pokemon_card.g.dart';
+
+@JsonSerializable(explicitToJson: true) // ✅ Permet de sérialiser tous les objets imbriqués
 class PokemonCard {
   final String id;
   final String name;
   final String supertype;
+  @JsonKey(defaultValue: [])
   final List<String> subtypes;
+  @JsonKey(defaultValue: [])
   final List<String> types;
   final String? artist;
   final String? cardImageUrl;
@@ -40,4 +46,6 @@ class PokemonCard {
       cardmarket: json['cardmarket'] != null ? Cardmarket.fromJson(json['cardmarket']) : null,
     );
   }
+
+  Map<String, dynamic> toJson() => _$PokemonCardToJson(this);
 }

@@ -1,3 +1,8 @@
+import 'package:json_annotation/json_annotation.dart';
+
+part 'image_set_entity.g.dart';
+
+@JsonSerializable()
 class ImageSetEntity {
   final String symbol;
   final String logo;
@@ -7,10 +12,6 @@ class ImageSetEntity {
     required this.logo,
   });
 
-  factory ImageSetEntity.fromJson(Map<String, dynamic> json) {
-    return ImageSetEntity(
-      symbol: json['symbol'],
-      logo: json['logo'],
-    );
-  }
+  factory ImageSetEntity.fromJson(Map<String, dynamic> json) => _$ImageSetEntityFromJson(json);
+  Map<String, dynamic> toJson() => _$ImageSetEntityToJson(this);
 }

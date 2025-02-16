@@ -1,5 +1,9 @@
+import 'package:json_annotation/json_annotation.dart';
 import 'image_set_entity.dart';
 
+part 'set_info.g.dart';
+
+@JsonSerializable()
 class SetInfo {
   final String id;
   final String name;
@@ -19,15 +23,6 @@ class SetInfo {
     required this.images,
   });
 
-  factory SetInfo.fromJson(Map<String, dynamic> json) {
-    return SetInfo(
-      id: json['id'],
-      name: json['name'],
-      series: json['series'],
-      total: json['total'],
-      releaseDate: json['releaseDate'],
-      updatedAt: json['updatedAt'],
-      images: json['images'] != null ? ImageSetEntity.fromJson(json['images']) : null,
-    );
-  }
+  factory SetInfo.fromJson(Map<String, dynamic> json) => _$SetInfoFromJson(json);
+  Map<String, dynamic> toJson() => _$SetInfoToJson(this);
 }

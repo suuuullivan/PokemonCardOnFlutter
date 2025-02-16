@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:pokemon_card_on_flutter/routes/app_routes.dart';
+import 'package:pokemon_card_on_flutter/ui/favoris/favorites_view_model.dart';
+import 'package:provider/provider.dart';
 import 'package:pokemon_card_on_flutter/ui/main_screen.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (context) => FavoritesViewModel()),
+      ],
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -15,7 +23,6 @@ class MyApp extends StatelessWidget {
       title: 'Pokemon Card Flutter',
       theme: ThemeData(primarySwatch: Colors.blue),
       home: const MainScreen(),
-      onGenerateRoute: AppRoutes.onGenerateRoute,
     );
   }
 }

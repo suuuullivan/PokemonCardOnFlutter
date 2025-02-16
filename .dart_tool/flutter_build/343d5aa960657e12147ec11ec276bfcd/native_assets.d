@@ -1,0 +1,1 @@
+ C:\\git\\PokemonCardOnFlutter\\.dart_tool\\flutter_build\\343d5aa960657e12147ec11ec276bfcd\\native_assets.yaml: 
