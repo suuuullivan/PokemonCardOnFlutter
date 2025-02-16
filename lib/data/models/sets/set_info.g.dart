@@ -25,5 +25,5 @@ Map<String, dynamic> _$SetInfoToJson(SetInfo instance) => <String, dynamic>{
       'total': instance.total,
       'releaseDate': instance.releaseDate,
       'updatedAt': instance.updatedAt,
-      'images': instance.images,
+      'images': instance.images?.toJson(),
     };

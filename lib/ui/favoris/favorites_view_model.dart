@@ -17,7 +17,6 @@ class FavoritesViewModel extends ChangeNotifier {
 
     _favorites = favoriteCards.map((jsonString) {
       final jsonData = json.decode(jsonString);
-
       return PokemonCard.fromJson(jsonData);
     }).toList();
 

@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'image_set_entity.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class ImageSetEntity {
   final String symbol;
   final String logo;

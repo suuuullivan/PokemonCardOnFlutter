@@ -3,11 +3,12 @@ import 'image_set_entity.dart';
 
 part 'set_info.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class SetInfo {
   final String id;
   final String name;
   final String series;
+  @JsonKey(name: 'total')
   final int? total;
   final String? releaseDate;
   final String? updatedAt;

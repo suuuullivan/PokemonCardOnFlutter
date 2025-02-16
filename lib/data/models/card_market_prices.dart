@@ -2,7 +2,7 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'card_market_prices.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class CardmarketPrices {
   final double averageSellPrice;
   final double lowPrice;

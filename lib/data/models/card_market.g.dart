@@ -18,5 +18,5 @@ Map<String, dynamic> _$CardmarketToJson(Cardmarket instance) =>
     <String, dynamic>{
       'url': instance.url,
       'updatedAt': instance.updatedAt,
-      'prices': instance.prices,
+      'prices': instance.prices?.toJson(),
     };
