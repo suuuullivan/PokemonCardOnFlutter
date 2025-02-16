@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:pokemon_card_on_flutter/data/models/pokemon_card.dart';
-
 import '../../../themes/app_theme.dart';
 
 class ContainerInformationCard extends StatelessWidget {
