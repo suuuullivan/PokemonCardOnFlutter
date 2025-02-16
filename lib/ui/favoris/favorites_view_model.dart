@@ -18,7 +18,6 @@ class FavoritesViewModel extends ChangeNotifier {
     _favorites = favoriteCards.map((jsonString) {
       final jsonData = json.decode(jsonString);
 
-      // ✅ S'assurer que `setInfo` et `images` sont bien reconstruits
       return PokemonCard.fromJson(jsonData);
     }).toList();
 
@@ -37,8 +36,6 @@ class FavoritesViewModel extends ChangeNotifier {
       });
     } else {
       _favorites.add(card);
-
-      // ✅ On sauvegarde la carte avec ses informations correctement
       favoriteCards.add(json.encode(card.toJson()));
     }
 

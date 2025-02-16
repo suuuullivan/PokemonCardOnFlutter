@@ -4,7 +4,7 @@ import 'card_market.dart';
 
 part 'pokemon_card.g.dart';
 
-@JsonSerializable(explicitToJson: true) // ✅ Permet de sérialiser tous les objets imbriqués
+@JsonSerializable(explicitToJson: true)
 class PokemonCard {
   final String id;
   final String name;
