@@ -101,4 +101,24 @@ class ApiService {
     return allCards;
   }
 
+  Future<List<String>> fetchFilters(String filterCategory) async {
+    final response = await http.get(
+      Uri.parse('$baseUrl/${filterCategory.toLowerCase()}s'),
+      headers: {'X-Api-Key': apiKey},
+    );
+
+    if (response.statusCode == 200) {
+      final decoded = json.decode(response.body);
+      final data = decoded['data'];
+
+      if (data == null || data is! List) {
+        return [];
+      }
+
+      return List<String>.from(data);
+    } else {
+      throw Exception('Erreur lors de la récupération des filtres $filterCategory');
+    }
+  }
+
 }
