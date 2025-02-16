@@ -18,11 +18,11 @@ PokemonCard _$PokemonCardFromJson(Map<String, dynamic> json) => PokemonCard(
           (json['types'] as List<dynamic>?)?.map((e) => e as String).toList() ??
               [],
       artist: json['artist'] as String?,
-      cardImageUrl: json['cardImageUrl'] as String?,
-      positionCard: json['positionCard'] as String?,
-      setInfo: json['setInfo'] == null
+      images: json['images'] as Map<String, dynamic>? ?? {},
+      positionCard: json['number'] as String?,
+      setInfo: json['set'] == null
           ? null
-          : SetInfo.fromJson(json['setInfo'] as Map<String, dynamic>),
+          : SetInfo.fromJson(json['set'] as Map<String, dynamic>),
       cardmarket: json['cardmarket'] == null
           ? null
           : Cardmarket.fromJson(json['cardmarket'] as Map<String, dynamic>),
@@ -36,8 +36,8 @@ Map<String, dynamic> _$PokemonCardToJson(PokemonCard instance) =>
       'subtypes': instance.subtypes,
       'types': instance.types,
       'artist': instance.artist,
-      'cardImageUrl': instance.cardImageUrl,
-      'positionCard': instance.positionCard,
-      'setInfo': instance.setInfo?.toJson(),
+      'number': instance.positionCard,
+      'set': instance.setInfo?.toJson(),
       'cardmarket': instance.cardmarket?.toJson(),
+      'images': instance.images,
     };

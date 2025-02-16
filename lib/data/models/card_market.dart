@@ -3,7 +3,7 @@ import 'card_market_prices.dart';
 
 part 'card_market.g.dart';
 
-@JsonSerializable()
+@JsonSerializable(explicitToJson: true)
 class Cardmarket {
   final String? url;
   final String? updatedAt;
