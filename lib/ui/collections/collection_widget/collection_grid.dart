@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import '../card_list/card_list_screen.dart';
 import '../../../data/models/sets/set_info.dart';
 import '../../../themes/app_color.dart';
 import '../../../themes/app_theme.dart';
 
 class CollectionGrid extends StatelessWidget {
   final List<SetInfo> sets;
+  final Function(String setId, String setImageWithUrl) onSetSelected;
 
-  const CollectionGrid({super.key, required this.sets});
+  const CollectionGrid({Key? key, required this.sets, required this.onSetSelected}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,14 +21,7 @@ class CollectionGrid extends StatelessWidget {
       itemBuilder: (context, index) {
         final set = sets[index];
         return GestureDetector(
-          onTap: () {
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => CardListScreen(setId: set.id, setImageWithUrl: set.images!.logo),
-              ),
-            );
-          },
+          onTap: () => onSetSelected(set.id, set.images!.logo),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
@@ -75,3 +68,5 @@ class CollectionGrid extends StatelessWidget {
     );
   }
 }
+
+

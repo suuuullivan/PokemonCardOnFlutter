@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:pokemon_card_on_flutter/ui/card_information/card_information_screen.dart';
-
+import '../ui/card_information/card_information_screen.dart';
 import '../ui/collections/card_list/card_list_screen.dart';
-import '../ui/collections/home_screen.dart';
+import '../ui/main_screen.dart';
 
 class AppRoutes {
   static const String homeScreen = '/';
@@ -12,12 +11,13 @@ class AppRoutes {
   static Route<dynamic>? onGenerateRoute(RouteSettings settings) {
     switch (settings.name) {
       case homeScreen:
-        return MaterialPageRoute(builder: (_) => HomeScreen());
+        return MaterialPageRoute(builder: (_) => const MainScreen());
       case cardListScreen:
+        final args = settings.arguments as Map<String, dynamic>;
         return MaterialPageRoute(
-          builder: (_) => const CardListScreen(
-            setId: '',
-            setImageWithUrl: '',
+          builder: (_) => CardListScreen(
+            setId: args['setId'],
+            setImageWithUrl: args['setImageWithUrl'],
           ),
         );
       case cardInformationScreen:
@@ -27,6 +27,7 @@ class AppRoutes {
             card: args['card'],
             setImageUrl: args['setImageUrl'],
           ),
+          fullscreenDialog: true,
         );
       default:
         return MaterialPageRoute(

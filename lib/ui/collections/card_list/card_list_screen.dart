@@ -8,48 +8,44 @@ class CardListScreen extends StatelessWidget {
   final String setId;
   final String setImageWithUrl;
 
-  const CardListScreen(
-      {Key? key, required this.setId, required this.setImageWithUrl})
-      : super(key: key);
+  const CardListScreen({super.key, required this.setId, required this.setImageWithUrl});
 
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
       create: (_) => CardListViewModel()..fetchCards(setId),
       child: Scaffold(
-          body: Column(
-        children: [
-          CustomTitle(
-            title: 'Your Collection',
-            imageUrl: setImageWithUrl,
-          ),
-          Expanded(
-            child: Consumer<CardListViewModel>(
-              builder: (context, viewModel, child) {
-                if (viewModel.isLoading) {
-                  return const Center(child: CircularProgressIndicator());
-                } else if (viewModel.errorMessage != null) {
-                  return Center(
-                      child: Text('Erreur : ${viewModel.errorMessage}'));
-                } else if (viewModel.cards.isEmpty) {
-                  return const Center(child: Text('Aucune carte trouvée.'));
-                }
+        body: Column(
+          children: [
+            CustomTitle(
+              title: 'Your Collection',
+              imageUrl: setImageWithUrl,
+            ),
+            Expanded(
+              child: Consumer<CardListViewModel>(
+                builder: (context, viewModel, child) {
+                  if (viewModel.isLoading) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (viewModel.errorMessage != null) {
+                    return Center(child: Text('Erreur : ${viewModel.errorMessage}'));
+                  } else if (viewModel.cards.isEmpty) {
+                    return const Center(child: Text('Aucune carte trouvée.'));
+                  }
 
-                final cards = viewModel.cards;
-                return Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                  child: GridView.builder(
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 20.0,
-                      crossAxisSpacing: 6.0,
-                      childAspectRatio: 0.7,
-                    ),
-                    itemCount: cards.length,
-                    itemBuilder: (context, index) {
-                      final card = cards[index];
-                      return GestureDetector(
+                  final cards = viewModel.cards;
+                  return Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                    child: GridView.builder(
+                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,
+                        mainAxisSpacing: 20.0,
+                        crossAxisSpacing: 6.0,
+                        childAspectRatio: 0.7,
+                      ),
+                      itemCount: cards.length,
+                      itemBuilder: (context, index) {
+                        final card = cards[index];
+                        return GestureDetector(
                           onTap: () {
                             Navigator.push(
                               context,
@@ -68,20 +64,21 @@ class CardListScreen extends StatelessWidget {
                             ),
                             child: card.cardImageUrl != null
                                 ? Image.network(
-                                    card.cardImageUrl!,
-                                    fit: BoxFit.cover,
-                                  )
-                                : const Icon(Icons.image_not_supported,
-                                    size: 120),
-                          ));
-                    },
-                  ),
-                );
-              },
+                              card.cardImageUrl!,
+                              fit: BoxFit.cover,
+                            )
+                                : const Icon(Icons.image_not_supported, size: 120),
+                          ),
+                        );
+                      },
+                    ),
+                  );
+                },
+              ),
             ),
-          )
-        ],
-      )),
+          ],
+        ),
+      ),
     );
   }
 }
