@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:pokemon_card_on_flutter/ui/collections/card_list/card_list_screen.dart';
 import 'package:pokemon_card_on_flutter/themes/app_theme.dart';
 import 'collection_widget/collection_grid.dart';
-import 'home_view_model.dart';
 import 'collection_widget/custom_search_bar.dart';
+import 'home_view_model.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({Key? key}) : super(key: key);
+
   @override
   _HomeScreenState createState() => _HomeScreenState();
 }
@@ -25,6 +27,17 @@ class _HomeScreenState extends State<HomeScreen> {
     super.dispose();
   }
 
+  void _navigateToCardList(String setId, String setImageWithUrl) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => CardListScreen(
+          setId: setId,
+          setImageWithUrl: setImageWithUrl,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
         forceMaterialTransparency: true,
         title: Text(
           'Your Collection',
-          style: AppTheme.titleAppPokemon
+          style: AppTheme.titleAppPokemon,
         ),
       ),
       body: Padding(
@@ -62,7 +75,10 @@ class _HomeScreenState extends State<HomeScreen> {
                   } else if (viewModel.filteredSets.isEmpty) {
                     return const Center(child: Text('No collections found.'));
                   } else {
-                    return CollectionGrid(sets: viewModel.filteredSets);
+                    return CollectionGrid(
+                      sets: viewModel.filteredSets,
+                      onSetSelected: _navigateToCardList,
+                    );
                   }
                 },
               ),
